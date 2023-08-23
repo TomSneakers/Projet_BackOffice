@@ -1,9 +1,10 @@
 import "./App.css";
+import { Products } from "./Composant/Product";
 
 function App() {
-  return <>
-  <h1>hello</h1>
-  </>;
+  return (
+    <Products />
+  )
 }
 
 export default App;
