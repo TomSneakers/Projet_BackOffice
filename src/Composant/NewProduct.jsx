@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import {
   Button,
   FormControl,
@@ -13,9 +13,18 @@ export function NewProduct() {
   const navigate = useNavigate();
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [desctiption, setDescription] = useState("");
+  const [prices, setPrices] = useState({});
+
+  function handlePriceChange(e) {
+    const {id, value } = e.target;
+    setPrices({...prices, [id]: value});
+  }
+
+  useEffect(() => {
+    console.log(prices);
+  }, [prices]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +33,7 @@ export function NewProduct() {
       const response = await ProductService.AddProduct(
         category,
         name,
-        price,
+        prices,
         imageUrl,
         desctiption
       );
@@ -59,13 +68,9 @@ export function NewProduct() {
         </FormControl>
         <FormControl>
           <FormLabel>Prix</FormLabel>
-          <Input
-            type="number"
-            step="0.01"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            required
-          />
+          <Input onChange={handlePriceChange} id={"sm"} type="number" placeholder={"Small"} required />
+          <Input onChange={handlePriceChange} id={"md"} type="number" placeholder={"Medium"} required />
+            <Input onChange={handlePriceChange} id={"lg"} type="number" placeholder={"Large"} required />
         </FormControl>
 
         <FormControl>

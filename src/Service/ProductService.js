@@ -5,12 +5,12 @@ async function GetOrders() {
     const result = await fetch("http://localhost:2023/orders", { method: "GET" })
     return result.json();
 }
-function AddProduct(category, name, price, image, description) {
+function AddProduct(category, name, prices, image, description) {
     const body = JSON.stringify({
         category: category,
         name: name,
-        price: price,
-        image: image,
+        prices: prices,
+        imageUrl: image,
         description: description
     });
     return fetch("http://localhost:2023/products", { method: "POST", body, headers: { "Content-Type": "application/json" } })
