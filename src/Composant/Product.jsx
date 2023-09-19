@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductService } from "../Service/ProductService";
 import {
   Table,
@@ -10,25 +9,42 @@ import {
   Td,
   TableCaption,
   TableContainer,
+  Button,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 export function Products() {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  function fetchProducts() {
+    setLoading(true);
     ProductService.GetProducts().then(async (data) => {
       const parsedData = await data.json();
-      console.log(parsedData);
       setProducts(parsedData);
       setLoading(false);
     });
-  }, []);
+  }
+
+  function handleDelete(id) {
+    ProductService.DeleteProduct(id);
+    window.location.reload();
+  }
 
   if (loading) {
     return <div>Loading...</div>;
   }
+
   return (
     <TableContainer>
+      <Button colorScheme="blue" onClick={() => navigate("/add")}>
+        Add product
+      </Button>
       <Table variant="simple">
         <TableCaption>Products</TableCaption>
         <Thead>
@@ -46,8 +62,12 @@ export function Products() {
               <Td>{product.name}</Td>
               <Td isNumeric>{product.price}</Td>
               <Td>
-                <button>Edit</button>
-                <button>Delete</button>
+                <Button onClick={() => navigate(`/edit/${product._id}`)}>
+                  Edit
+                </Button>
+                <Button onClick={() => handleDelete(product._id)}>
+                  Delete
+                </Button>
               </Td>
             </Tr>
           ))}
