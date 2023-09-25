@@ -43,8 +43,11 @@ export function Products() {
 
     return (
         <TableContainer>
-            <Button colorScheme="blue" onClick={() => navigate("/add")}>
+            <Button colorScheme="blue" onClick={() => navigate("/product/add")}>
                 Add product
+            </Button>
+            <Button colorScheme="blue" onClick={() => navigate("/orders")}>
+                Orders
             </Button>
             <Table variant="simple">
                 <TableCaption>Products</TableCaption>
@@ -67,7 +70,7 @@ export function Products() {
                             <Td>{product.name}</Td>
                             <Td isNumeric>{product.price}</Td>
                             <Td>
-                                <Button onClick={() => navigate(`/edit/${product._id}`)}>
+                                <Button onClick={() => navigate(`/product/edit/${product._id}`)}>
                                     Edit
                                 </Button>
                                 <Button onClick={() => handleDelete(product._id)}>

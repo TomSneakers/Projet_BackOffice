@@ -6,6 +6,8 @@ import { EditProduct } from "./Composant/EditProduct";
 import { ConnectUserProvider } from "./Composant/context/connectUserProvider";
 // import Orders from "./Composant/Orders";
 import Layout from "./Layout";
+import {Orders} from "./Composant/orders.jsx";
+import {OrderDetail} from "./Composant/OrderDetail.jsx";
 
 function App() {
   return (
@@ -14,8 +16,10 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Products />} />
-            <Route path="/add" element={<NewProduct />} />
-            <Route path="/edit/:id" element={<EditProduct />} />
+            <Route path="/product/add" element={<NewProduct />} />
+            <Route path="/product/edit/:id" element={<EditProduct />} />
+            <Route path="/orders" element={<Orders/>} />
+            <Route path="/order/:id" element={<OrderDetail/>} />
             {/* <Route paths="/orders" element={<Orders />} /> */}
           </Routes>
         </BrowserRouter>
