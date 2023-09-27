@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   FormControl,
@@ -18,8 +18,8 @@ export function NewProduct() {
   const [prices, setPrices] = useState({});
 
   function handlePriceChange(e) {
-    const {id, value } = e.target;
-    setPrices({...prices, [id]: value});
+    const { id, value } = e.target;
+    setPrices({ ...prices, [id]: value });
   }
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export function NewProduct() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="add_product">
       <VStack spacing={4} align="start">
         <FormControl>
           <FormLabel>Catégorie</FormLabel>
@@ -68,9 +68,27 @@ export function NewProduct() {
         </FormControl>
         <FormControl>
           <FormLabel>Prix</FormLabel>
-          <Input onChange={handlePriceChange} id={"sm"} type="number" placeholder={"Small"} required />
-          <Input onChange={handlePriceChange} id={"md"} type="number" placeholder={"Medium"} required />
-            <Input onChange={handlePriceChange} id={"lg"} type="number" placeholder={"Large"} required />
+          <Input
+            onChange={handlePriceChange}
+            id={"sm"}
+            type="number"
+            placeholder={"Petite"}
+            required
+          />
+          <Input
+            onChange={handlePriceChange}
+            id={"md"}
+            type="number"
+            placeholder={"Moyenne"}
+            required
+          />
+          <Input
+            onChange={handlePriceChange}
+            id={"lg"}
+            type="number"
+            placeholder={"Grande"}
+            required
+          />
         </FormControl>
 
         <FormControl>

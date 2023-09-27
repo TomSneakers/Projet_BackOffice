@@ -1,9 +1,9 @@
 function GetProducts() {
-    return fetch("http://localhost:2023/products", {method: "GET"});
+    return fetch("http://localhost:2023/products", { method: "GET" });
 }
 
 async function GetOrders() {
-    const result = await fetch("http://localhost:2023/orders", {method: "GET"});
+    const result = await fetch("http://localhost:2023/orders", { method: "GET" });
     return result.json();
 }
 
@@ -18,36 +18,36 @@ function AddProduct(category, name, prices, image, description) {
     return fetch("http://localhost:2023/products", {
         method: "POST",
         body,
-        headers: {"Content-Type": "application/json"}
+        headers: { "Content-Type": "application/json" }
     });
 }
 
 async function GetProduct(id) {
-    const result = await fetch(`http://localhost:2023/product/${id}`, {method: "GET"});
+    const result = await fetch(`http://localhost:2023/product/${id}`, { method: "GET" });
     return result.json();
 }
 
-function UpdateProduct(id, category, name, price, image, description) {
+function UpdateProduct(id, category, name, prices, image, description) {
     const body = JSON.stringify({
         category: category,
         name: name,
-        price: price,
+        prices: prices,
         imageUrl: image,
         description: description
     });
     return fetch(`http://localhost:2023/product/${id}`, {
         method: "PUT",
         body,
-        headers: {"Content-Type": "application/json"}
+        headers: { "Content-Type": "application/json" }
     });
 }
 
 function DeleteProduct(id) {
-    return fetch(`http://localhost:2023/product/${id}`, {method: "DELETE"});
+    return fetch(`http://localhost:2023/product/${id}`, { method: "DELETE" });
 }
 
 async function GetOrder(id) {
-    const request = await fetch(`http://localhost:2023/order/${id}`, {method: "GET"});
+    const request = await fetch(`http://localhost:2023/order/${id}`, { method: "GET" });
     return request.json();
 }
 

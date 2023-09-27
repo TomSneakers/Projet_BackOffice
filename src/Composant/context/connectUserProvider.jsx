@@ -11,7 +11,7 @@ export function ConnectUserProvider({ children }) {
   const [isUserConnected, setConnectedUser] = useState(false);
 
   function tryConnect(username, password) {
-    if (username === "admin" && password === "admin") {
+    if (username === "adminOfive" && password === "adminOfive123456") {
       setConnectedUser(true);
     } else {
       alert("Mauvais identifiant ou mot de passe");
@@ -20,7 +20,7 @@ export function ConnectUserProvider({ children }) {
 
   return (
     <connectUserContet.Provider>
-      {isUserConnected ? children : <LoginForm onSubmit={tryConnect}/>}
+      {isUserConnected ? children : <LoginForm onSubmit={tryConnect} />}
     </connectUserContet.Provider>
   );
 }

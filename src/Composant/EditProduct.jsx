@@ -15,15 +15,16 @@ export function EditProduct() {
   const [loading, setLoading] = useState(true);
   const [updatedCategory, setUpdatedCategory] = useState("");
   const [updatedName, setUpdatedName] = useState("");
-  const [updatedPrice, setUpdatedPrice] = useState("");
+  const [updatedPrices, setUpdatedPrices] = useState("");
   const [updatedImageUrl, setUpdatedImageUrl] = useState("");
   const [updatedDescription, setUpdatedDescription] = useState("");
 
   useEffect(() => {
     ProductService.GetProduct(id).then(async (data) => {
+      console.log(data);
       setUpdatedCategory(data.category);
       setUpdatedName(data.name);
-      setUpdatedPrice(data.price.toString());
+      setUpdatedPrices(data.prices);
       setUpdatedImageUrl(data.imageUrl);
       setUpdatedDescription(data.description);
       setLoading(false);
@@ -34,7 +35,14 @@ export function EditProduct() {
     e.preventDefault();
 
     try {
-      const response = await ProductService.UpdateProduct(id, updatedName, updatedCategory, updatedPrice, updatedImageUrl, updatedDescription);
+      const response = await ProductService.UpdateProduct(
+        id,
+        updatedName,
+        updatedCategory,
+        updatedPrices,
+        updatedImageUrl,
+        updatedDescription
+      );
       if (response.status === 200) {
         navigate("/"); // Rediriger vers la liste des produits après la mise à jour
       }
@@ -73,8 +81,28 @@ export function EditProduct() {
           <Input
             type="number"
             step="0.01"
-            value={updatedPrice}
-            onChange={(e) => setUpdatedPrice(e.target.value)}
+            value={updatedPrices["sm"]}
+            onChange={(e) =>
+              setUpdatedPrices({ ...updatedPrices, sm: e.target.value })
+            }
+            required
+          />
+          <Input
+            type="number"
+            step="0.01"
+            value={updatedPrices["md"]}
+            onChange={(e) =>
+              setUpdatedPrices({ ...updatedPrices, md: e.target.value })
+            }
+            required
+          />
+          <Input
+            type="number"
+            step="0.01"
+            value={updatedPrices["lg"]}
+            onChange={(e) =>
+              setUpdatedPrices({ ...updatedPrices, lg: e.target.value })
+            }
             required
           />
         </FormControl>

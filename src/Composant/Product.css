@@ -1,0 +1,90 @@
+/* Style pour le conteneur de la table */
+.TableContainer {
+    background-color: rgba(0, 0, 0, 0.467);
+    color: white;
+    padding: 20px;
+    border-radius: 50px;
+}
+
+.order {
+    background-color: rgba(0, 0, 0, 0.467);
+    color: white;
+    padding: 20px;
+    border-radius: 50px;
+}
+
+.add_product {
+    background-color: rgba(0, 0, 0, 0.467);
+    color: white;
+    padding: 20px;
+    border-radius: 50px;
+}
+
+.Background {
+    background-color: black;
+    color: white;
+}
+
+/* Style pour les boutons */
+.Button {
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Style pour les boutons au survol */
+.Button:hover {
+    background-color: white;
+    color: orange;
+}
+
+/* Style pour la table */
+.Table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Style pour les légendes de la table */
+.TableCaption {
+    color: orange;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Style pour les en-têtes de colonne */
+.Th {
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Style pour les lignes de données */
+.Tr {
+    background-color: black;
+    color: white;
+}
+
+/* Style pour les cellules de données */
+.Td {
+    padding: 10px;
+}
+
+/* Style pour les boutons "Edit" et "Delete" dans la dernière colonne */
+.ActionsButton {
+    background-color: orange;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Style pour les boutons "Edit" et "Delete" au survol */
+.ActionsButton:hover {
+    background-color: white;
+    color: orange;
+}
